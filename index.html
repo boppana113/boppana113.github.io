@@ -3,8 +3,7 @@
 <head>
   <title>Sriram Boppana - Personal Website</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -60,16 +59,39 @@
         </li>
       </ul>
     </section>
-    
     <section id="skills">
-      <h2>Skills</h2>
+      <section id="skills">
+        <h2>Programming Languages</h2>
+        <div class="skills-container">
+          <div class="skill">
+            <i class="fab fa-language"></i>
+            <span>C</span>
+          </div>
+          <div class="skill">
+            <i class="fab fa-language"></i>
+            <span>C++</span>
+          </div>
+          <div class="skill">
+            <i class="fab fa-python"></i>
+            <span>Python</span>
+          </div>
+          <div class="skill">
+            <i class="fas fa-database"></i>
+            <span>SQL</span>
+          </div>
+          <!-- Add more skills as needed -->
+        </div>
+      </section>
+      
+    <section id="skills">
+      <!-- <h2>Skills</h2>
       <h3>Programming Languages</h3>
       <ul>
         <li>Python (Numpy, Pandas, PyTorch, TensorFlow, Jupyter, Flask)</li>
         <li>C</li>
         <li>C++</li>
         <li>SQL</li>
-      </ul>
+      </ul> -->
       
       <h3>Software Tools</h3>
       <ul>
@@ -105,47 +127,6 @@
         <li><a href="https://github.com/boppana113">GitHub</a></li>
       </ul>
     </section>
-    <script>
-      // Function to fetch images from the "slideshow" folder
-      function fetchImages() {
-        // Define the folder path
-        const folderPath = "slideshow/";
-    
-        // Fetch the images
-        fetch(folderPath)
-          .then((response) => response.text())
-          .then((data) => {
-            // Extract the filenames from the fetched HTML content
-            const filenames = Array.from(
-              new DOMParser()
-                .parseFromString(data, "text/html")
-                .querySelectorAll("a")
-            )
-              .map((element) => element.href)
-              .filter((href) => href.endsWith(".jpg") || href.endsWith(".png"));
-    
-            // Generate the HTML code for the slideshow
-            const slideshowContainer = document.getElementById("slideshow-container");
-            let html = "";
-            filenames.forEach((filename) => {
-              html += `<div><img src="${folderPath + filename}" alt="${filename}"></div>`;
-            });
-            slideshowContainer.innerHTML = html;
-    
-            // Initialize the slideshow using Slick Carousel
-            $(document).ready(function () {
-              $(".slideshow-container").slick();
-            });
-          })
-          .catch((error) => {
-            console.error("Error fetching images:", error);
-          });
-      }
-    
-      // Call the fetchImages function to load the images
-      fetchImages();
-    </script>
-    
   </main>
   
   <footer>
