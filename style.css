@@ -88,3 +88,13 @@ footer {
 footer p {
   margin: 0;
 }
+
+#slideshow {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.slideshow-container {
+  width: 100%;
+}

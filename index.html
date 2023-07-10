@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>Sriram Boppana - Personal Website</title>
-  
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <header>
@@ -24,6 +26,11 @@
     <section id="about">
       <h2>About Me</h2>
       <p>I am Sriram Boppana, a passionate individual in the field of biomedical engineering and computer science. I obtained my B.S. in Biomedical Engineering with a minor in Electrical Engineering from Purdue University in 2017. Following that, I pursued my M.S. in Biomedical Engineering at Case Western Reserve University in 2018. Currently, I am pursuing my M.S. in Computer Science at Georgia Institute of Technology, expecting to graduate in 2025.</p>
+    </section>
+
+    <section id="slideshow">
+      <div class="slideshow-container" id="slideshow-container">
+      </div>
     </section>
     
     <section id="experience">
@@ -98,10 +105,52 @@
         <li><a href="https://github.com/boppana113">GitHub</a></li>
       </ul>
     </section>
+    <script>
+      // Function to fetch images from the "slideshow" folder
+      function fetchImages() {
+        // Define the folder path
+        const folderPath = "slideshow/";
+    
+        // Fetch the images
+        fetch(folderPath)
+          .then((response) => response.text())
+          .then((data) => {
+            // Extract the filenames from the fetched HTML content
+            const filenames = Array.from(
+              new DOMParser()
+                .parseFromString(data, "text/html")
+                .querySelectorAll("a")
+            )
+              .map((element) => element.href)
+              .filter((href) => href.endsWith(".jpg") || href.endsWith(".png"));
+    
+            // Generate the HTML code for the slideshow
+            const slideshowContainer = document.getElementById("slideshow-container");
+            let html = "";
+            filenames.forEach((filename) => {
+              html += `<div><img src="${folderPath + filename}" alt="${filename}"></div>`;
+            });
+            slideshowContainer.innerHTML = html;
+    
+            // Initialize the slideshow using Slick Carousel
+            $(document).ready(function () {
+              $(".slideshow-container").slick();
+            });
+          })
+          .catch((error) => {
+            console.error("Error fetching images:", error);
+          });
+      }
+    
+      // Call the fetchImages function to load the images
+      fetchImages();
+    </script>
+    
   </main>
   
   <footer>
     <p>&copy; 2023 Sriram Boppana</p>
   </footer>
+
 </body>
 </html>
