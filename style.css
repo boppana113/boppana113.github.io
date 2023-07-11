@@ -22,19 +22,31 @@ header {
 
 .header-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start ;
   align-items: center;
+  margin-left: 0px;
 }
+
+.header-container a {
+  margin-left: 10px;
+}
+
 
 .github-link {
   color: #fff;
-  font-size: 24px;
+  font-size: 48px;
   text-decoration: none;
 }
 
 .linkedin-link {
   color: #fff;
-  font-size: 24px;
+  font-size: 48px;
+  text-decoration: none;
+}
+
+.researchgate-link {
+  color: #fff;
+  font-size: 48px;
   text-decoration: none;
 }
 
@@ -43,11 +55,11 @@ header img {
   max-height: 300px;
   width: auto;
   height: auto;
-  border-radius: 50%;
+  border-radius: 5%;
 }
 
 header h1 {
-  font-size: 24px;
+  font-size: 48px;
   margin: 0;
 }
 
