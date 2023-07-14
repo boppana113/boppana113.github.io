@@ -118,3 +118,9 @@ footer {
 footer p {
   margin: 0;
 }
+a {
+  color: #000; /* Customize the color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Adjust the font weight */
+  /* Add any additional styling as desired */
+}
